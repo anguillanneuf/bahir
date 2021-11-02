@@ -90,3 +90,33 @@ export GCP_TEST_P12_KEY_PATH=/path/to/pubsub/credential/files/Apache-Bahir-PubSu
 
 mvn test -pl streaming-pubsub
 ```
+
+To run test on my GCP project:
+
+```
+mvn clean package -DskipTests -pl streaming-pubsub
+
+export ENABLE_PUBSUB_TESTS=1
+export GCP_TEST_ACCOUNT="tz-proj-master@tz-playground-bigdata.iam.gserviceaccount.com"
+export GCP_TEST_PROJECT_ID="tz-playground-bigdata"
+export GCP_TEST_JSON_KEY_PATH=/Users/tianzi/Documents/Credentials/tz-proj-master.json
+export GCP_TEST_P12_KEY_PATH=/Users/tianzi/Documents/Credentials/tz-proj-master.p12
+
+mvn test -pl streaming-pubsub
+```
+
+Output:
+
+```
+Using project tz-playground-bigdata for creating Pub/Sub topic and subscription for tests.
+PubsubStreamSuite:
+- PubsubUtils API
+- pubsub input stream
+- manual acknowledgement
+- create subscription
+Run completed in 39 seconds, 687 milliseconds.
+Total number of tests run: 13
+Suites: completed 3, aborted 0
+Tests: succeeded 13, failed 0, canceled 0, ignored 0, pending 0
+All tests passed.
+```
